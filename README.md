@@ -57,9 +57,9 @@ CMD ["python","./server.py"]
 
 ### 1.3 Kubernetes components
 
+### 1.4 Introduction on Kubeflow Orchestration
 
 
-### 1.4 Introduction on Kubeflow Orchestration 
 
 ![image-20230220142810963](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220142810963.png)
 
@@ -76,4 +76,17 @@ The Kubeflow UIs include the following:
 - Artifact Store for tracking of artifact metadata.
 - Manage Contributors for sharing the user access across namespaces in the Kubeflow deployment.
 
+
+
 ![image-20230220154625692](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220154625692.png)
+
+
+
+
+
+#  2.介绍Kubeflow和Kubernetes架构
+
+
+
+
+
