@@ -64,3 +64,19 @@ CMD ["python","./server.py"]
 ![image-20230220142810963](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220142810963.png)
 
 Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
+
+### 1.5 Components of Kubeflow
+
+The Kubeflow UIs include the following:
+
+- Home, a central dashboard for navigation between the Kubeflow components.
+- Pipelines for a Kubeflow Pipelines dashboard.
+- Notebook Servers for Jupyter notebooks.
+- Katib for hyperparameter tuning.
+- Artifact Store for tracking of artifact metadata.
+- Manage Contributors for sharing the user access across namespaces in the Kubeflow deployment.
+
+![image-20230220154625692](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220154625692.png)
+=======
+Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
+
