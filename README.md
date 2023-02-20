@@ -77,3 +77,6 @@ The Kubeflow UIs include the following:
 - Manage Contributors for sharing the user access across namespaces in the Kubeflow deployment.
 
 ![image-20230220154625692](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220154625692.png)
+=======
+Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
+
