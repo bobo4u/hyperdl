@@ -3,7 +3,7 @@
 
 
 
-## 介绍Kubeflow和Kubernetes架构
+## 1.介绍Kubeflow和Kubernetes架构
 
 ## Structure
 
@@ -27,7 +27,7 @@
 - Kubeflow组件和在云平台设置Kubeflow集群
 - 在CPU资源中使用Docker镜像以及设置PVC启动Jupyter NoteBook
 
-### Docker Understanding
+### 1.1Docker Understanding
 
 Docker is a platform for the developers and system admins to build,run,and share the application with the containers.
 
@@ -42,7 +42,25 @@ Docker is a platform for the developers and system admins to build,run,and share
 
 
 
-### Kubernetes concepts and architecture
+#### Dockerfile
+
+```
+FROM python:3.9
+WORDIR /app
+COPY requirements.txt .
+RUN pip install -y requirements.txt
+COPY src/ .
+CMD ["python","./server.py"]
+```
+
+### 1.2 Kubernetes Architecture
+
+### 1.3 Kubernetes components
 
 
 
+### 1.4 Introduction on Kubeflow Orchestration 
+
+![image-20230220142810963](C:\Users\18515\AppData\Roaming\Typora\typora-user-images\image-20230220142810963.png)
+
+Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
