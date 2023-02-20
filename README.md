@@ -43,7 +43,6 @@ Docker is a platform for the developers and system admins to build,run,and share
 
 
 #### Dockerfile
-
 ```
 FROM python:3.9
 WORDIR /app
@@ -85,8 +84,4 @@ The Kubeflow UIs include the following:
 
 
 #  2.介绍Kubeflow和Kubernetes架构
-
-
-
-
 
