@@ -41,7 +41,8 @@
 ### 其他
 
 - 新增管理员单独界面
-- 支持[Kubernetes 1.21.14](https://kubernetes.io/docs/home/)，[Cuda 11.4](https://www.nvidia.cn/geforce/technologies/cuda/technology/)，华为版本[CANN ](https://www.hiascend.com/zh/software/cann),[MindX DL](https://www.hiascend.com/zh/software/mindx-dl)
+- 升级版本到[Kubernetes 1.21.14](https://kubernetes.io/docs/home/)，[Cuda 11.4](https://www.nvidia.cn/geforce/technologies/cuda/technology/)，华为版本[CANN ](https://www.hiascend.com/zh/software/cann),[MindX DL](https://www.hiascend.com/zh/software/mindx-dl)
+- [软硬件支持情况说明](./支持说明.md)
 
 
 
