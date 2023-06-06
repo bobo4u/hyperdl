@@ -1,4 +1,4 @@
-# GPU虚拟化简介
+# GPU虚拟化简介-0.1版本
 GPU是一种用于矩阵计算的PCIe设备，一般用于解码、渲染和科学计算等[并行计算](https://cloud.tencent.com/product/gpu?from=20065&from_column=20065)场景，不同场景对GPU使用方式不同，使用的加速库也各不相同，本文提到的GPU虚拟化主要针对科学计算场景，使用的加速库为nvidia cuda。
 
 从用户角度，GPU虚拟化可以简单分为两种类型，虚拟机层面的虚拟化和[容器](https://cloud.tencent.com/product/tke?from=20065&from_column=20065)层面的虚拟化。虚拟机层面的虚拟化是将GPU硬件设备虚拟给多个KVM虚拟机使用，各个虚拟机独立安装驱动，这样既保证了虚拟机内的GPU功能完备又实现GPU资源的隔离和共享，唯一缺点就是资源损耗相对较大。容器层面的虚拟化则有两个思路，一个是将GPU纳入cgroup管理，目前尚未有成熟的提案，短期内难以实现，二是基于GPU驱动封装实现，用户根据需要对驱动的某些关键接口（如显存分配、cuda thread创建等）进行封装劫持，在劫持过程中限制用户进程对计算资源的使用，此类方案缺点是兼容性依赖于厂商驱动，但是整体方案较为轻量化，性能损耗极小。GPUManager即为第二类容器层面的虚拟化方案，本文主要介绍GPUManager方案原理和部署流程。 
@@ -19,7 +19,7 @@ GPU是一种用于矩阵计算的PCIe设备，一般用于解码、渲染和科�
 4. kubelet监听到绑定到当前节点的Pod，调用Device plugin的allocate接口为Pod分配设备
 5. kubelet启动Pod内的容器，将设备映射给容器
 
-![img](.\images\异构资源调度示意图.jpg)
+![img](./images/异构资源调度示意图.jpg)
 
 至此，第三方设备厂商如Nvidia、AMD、Intel，可以通过各自的Device Plugin满足用户在k8s上使用异构资源的需求，Nvidia还针对GPU实现了自己的[docker](https://cloud.tencent.com/product/tke?from=20065&from_column=20065) runtime以更优雅的形式解决设备映射和驱动目录映射问题。然而Nvidia的容器层GPU方案仅支持将整块卡映射到容器，无法在容器之间共享同一张卡，而GPU卡作为专用芯片算力强大且价格昂贵，无法共享情况下往往造成大量资源浪费，为此腾讯基于k8s的device plugin架构实现了自己的Plugin GPUManager。
 
@@ -29,17 +29,17 @@ GPU是一种用于矩阵计算的PCIe设备，一般用于解码、渲染和科�
 
 ​    vcuda库是一个对nvidia-ml和libcuda库的封装库，通过劫持容器内用户程序的cuda调用限制当前容器内进程对GPU和显存的使用。
 
-![img](.\images\vcuda调用示例.jpg)
+![img](./images/vcuda调用示例.jpg)
 
    gpu-manager-daemonset是标准的k8s device plugin，实现了GPU拓扑感知、设备和驱动映射等功能。GPUManager支持共享和独占两种模式，当负载里tencent.com/vcuda-core request 值在0~100情况下，采用共享模式调度，优先将碎片资源集中到一张卡上，当负载里的tencent.com/vcuda-core request为100的倍数时，采用独占模式调度，gpu-manager-daemonset会根据GPU拓扑结构生成GPU卡的拓扑树，选择最优的结构（距离最短的叶子节点）进行调度分配。需要注意的是GPUManager仅支持0~100和100的整数倍的GPU需求调度，无法支持150，220类的非100整数倍的GPU需求调度。 
 
-![img](.\images\GPU拓扑结构.jpg)
+![img](./images/GPU拓扑结构.jpg)
 
    gpu-quota-admission是一个k8s Scheduler extender，实现了Scheduler的predicates接口，kube-scheduler在调度tencent.com/vcuda-core资源请求的Pod时，predicates阶段会调用gpu-quota-admission的predicates接口对节点进行过滤和绑定，同时gpu-quota-admission提供了GPU资源池调度功能，解决不同类型的GPU在namespace下的配额问题。
 
 ​    GPUManager整体方案如下：
 
-![img](.\images\GPUManager方案.jpg)
+![img](./images/GPUManager方案.jpg)
 
  在GPU数据采集方面，GPUManager通过grpc-gateway的方式对外暴露了metric接口，供用户采集gpu使用信息，目前支持：
 
@@ -482,4 +482,4 @@ cd /data/tensorflow/cifar10 && time python cifar10_train.py
 nvidia-smi pmon -s u -d 
 ```
 
-![img](.\images\nvidia-smi.jpg)
+![img](./images/nvidia-smi.jpg)
