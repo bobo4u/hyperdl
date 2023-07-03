@@ -61,7 +61,7 @@ CMD ["python","./server.py"]
 
 
 
-![kubeflow Orchestration](./images/kubeflow Orchestration.png)
+![kubeflow](./images/kubeflow Orchestration.png)
 
 Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
 
