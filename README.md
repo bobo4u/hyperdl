@@ -61,7 +61,7 @@ CMD ["python","./server.py"]
 
 
 
-![kubeflow Orchestration](C:\lzb\Work\公司资料\产品资料\2023列磐重生\02产品知识库\book\images\kubeflow Orchestration.png)
+![kubeflow Orchestration](.\images\kubeflow Orchestration.png)
 
 Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
 
@@ -76,7 +76,7 @@ The Kubeflow UIs include the following:
 - Artifact Store for tracking of artifact metadata.
 - Manage Contributors for sharing the user access across namespaces in the Kubeflow deployment.
 
-![kubeflow](C:\lzb\Work\公司资料\产品资料\2023列磐重生\02产品知识库\book\images\kubeflow.png)
+![kubeflow](.\images\kubeflow.png)
 
 
 
