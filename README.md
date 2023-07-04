@@ -59,7 +59,7 @@ CMD ["python","./server.py"]
 
 ### 1.4 Introduction on Kubeflow Orchestration
 
-![kubeflow Orchestration](./images/kubeflow Orchestration.png)
+![Orchestration](./images/Orchestration.png)
 
 Kubeflow is the ML toolkit for Kubernetes. The preceding diagram shows Kubeflow as a platform for arranging the components of your ML system on top of Kubernetes.
 
