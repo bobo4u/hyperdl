@@ -78,3 +78,9 @@ The Kubeflow UIs include the following:
 
 #  2.介绍Kubeflow和Kubernetes架构
 
+
+
+# 需学习的知识
+
+[主动学习]: ./算法资料/Yuan_Multiple_Instance_Active_Learning_for_Object_Detection_CVPR_2021_paper
+
