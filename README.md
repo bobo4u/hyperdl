@@ -82,6 +82,4 @@ The Kubeflow UIs include the following:
 
 # 需学习的知识
 
-[主动学习]: 
-
-[主动学习](./算法资料/Yuan_Multiple_Instance_Active_Learning_for_Object_Detection_CVPR_2021_paper )
+[主动学习](./算法资料)
